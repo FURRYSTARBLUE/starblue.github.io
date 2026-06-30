@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARBLUE BROWSER - 为老电脑而生的极速浏览器</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* 导航栏 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: rgba(15, 15, 30, 0.7);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #61dafb;
+        }
+        .logo span { color: #e0e0e0; font-size: 1rem; margin-left: 8px; }
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #61dafb; }
+
+        /* 主横幅 */
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem 3rem;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #61dafb, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+        .hero .tag {
+            display: inline-block;
+            background: rgba(97, 218, 251, 0.15);
+            color: #61dafb;
+            padding: 0.3rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        .btn-download {
+            display: inline-block;
+            background: #61dafb;
+            color: #1a1a2e;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(97, 218, 251, 0.4);
+        }
+        .btn-download:hover {
+            background: #a78bfa;
+            box-shadow: 0 6px 20px rgba(167, 139, 250, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* 特色区块 */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            flex: 1 1 250px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+        }
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .feature-card h3 { color: #61dafb; margin-bottom: 0.8rem; }
+        .feature-card p { color: #aaa; font-size: 0.95rem; }
+
+        /* 下载区 */
+        .download-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: rgba(0,0,0,0.2);
+        }
+        .download-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .download-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 280px;
+            text-align: center;
+        }
+        .download-card h3 { color: #fff; margin-bottom: 1rem; }
+        .download-card p { color: #aaa; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .download-card a {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #61dafb;
+            color: #61dafb;
+            padding: 0.7rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .download-card a:hover {
+            background: #61dafb;
+            color: #1a1a2e;
+        }
+        .version { font-size: 0.8rem; color: #666; margin-top: 0.5rem; }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        footer a { color: #61dafb; text-decoration: none; }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { flex-direction: column; gap: 0.8rem; }
+            nav a { margin: 0 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <nav>
+        <div class="logo"> STARBLUE<span>BROWSER</span></div>
+        <div>
+            <a href="#features">功能</a>
+            <a href="#download">下载</a>
+            <a href="#about">关于</a>
+        </div>
+    </nav>
+
+    <!-- 主横幅 -->
+    <section class="hero">
+        <h1>为老电脑而生的极速浏览器</h1>
+        <p>基于 Chromium 内核，专为 Windows 7 / 8 / 10 / 11 优化，<br>让旧设备也能享受流畅的上网体验。</p>
+        <div class="tag">🚀 启动不到一秒 | 💻 完美兼容 Win7 | 🎬 视频不黑屏</div><br>
+        <a href="#download" class="btn-download">⬇ 免费下载</a>
+    </section>
+
+    <!-- 特色功能 -->
+    <section id="features" class="features">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>秒速启动</h3>
+            <p>极致轻量，冷启动不到 1 秒，内存占用仅 80MB 左右。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🖥️</div>
+            <h3>老机福音</h3>
+            <p>完美支持 Windows 7，特别优化 AMD / NVIDIA 旧显卡，视频播放有声音有画面。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📑</div>
+            <h3>多标签页</h3>
+            <p>简洁实用的标签管理，新建、切换、关闭一气呵成，每个标签独立记忆网址。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>安全纯净</h3>
+            <p>无广告、无后台、不收集隐私，所有数据保存在本地。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⭐</div>
+            <h3>收藏 & 历史</h3>
+            <p>内置收藏夹与历史记录管理，轻松回访常用网站。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📥</div>
+            <h3>下载管理</h3>
+            <p>下载进度实时显示，完成后可直接打开文件或文件夹。</p>
+        </div>
+    </section>
+
+    <!-- 下载区 -->
+    <section id="download" class="download-section">
+        <h2 style="font-size:2rem; color:#61dafb;">立即下载 STARBLUE BROWSER</h2>
+        <p style="color:#aaa; margin-top:0.5rem;">当前版本 v1.0.0 · 支持 Windows 7 及以上</p>
+        <div class="download-options">
+            <!-- 安装版 -->
+            <div class="download-card">
+                <h3>💿 安装版</h3>
+                <p>标准 NSIS 安装程序，可自定义安装路径，创建桌面快捷方式。</p>
+                <a href="YOUR_SETUP_EXE_LINK" target="_blank">下载安装包</a>
+                <div class="version">STARBLUE BROWSER Setup 1.0.0.exe</div>
+            </div>
+            <!-- 便携版 -->
+            <div class="download-card">
+                <h3>📂 便携版</h3>
+                <p>解压即用，无需安装，可放入 U 盘随身携带。</p>
+                <a href="YOUR_PORTABLE_ZIP_LINK" target="_blank">下载便携版</a>
+                <div class="version">STARBLUE BROWSER Portable.zip</div>
+            </div>
+            <!-- 老电脑专用版 -->
+            <div class="download-card">
+                <h3>🖥️ 老电脑专用版</h3>
+                <p>针对旧显卡强制软件渲染，彻底解决视频黑屏问题。</p>
+                <a href="YOUR_OLD_PC_EXE_LINK" target="_blank">下载老电脑版</a>
+                <div class="version">STARBLUE BROWSER OldPC 1.0.0.exe</div>
+            </div>
+        </div>
+        <p style="color:#666; margin-top:2rem;">联系作者：<a href="mailto:3555352883@qq.com">3555352883@qq.com</a></p>
+    </section>
+
+    <!-- 关于 -->
+    <section id="about" style="text-align:center; padding:3rem 1rem; max-width:800px; margin:0 auto;">
+        <h2 style="color:#61dafb; font-size:2rem; margin-bottom:1rem;">关于 STARBLUE BROWSER</h2>
+        <p style="color:#ccc;">
+            由 <strong>星之蔚蓝</strong> 独立开发，<strong>星蔚蓝工作室</strong> 出品。<br>
+            初衷是为自己的旧电脑打造一款真正能用的浏览器，让老设备重获新生。<br>
+            本软件基于 Electron 22 + Chromium 108 构建，永久免费，禁止商用。
+        </p>
+        <p style="color:#666; margin-top:1rem;">© 2026 星蔚蓝工作室 · 保留所有权利</p>
+    </section>
+
+    <footer>
+        作者：星之蔚蓝 | 联系邮箱：3555352883@qq.com | 本项目仅供学习与个人使用
+    </footer>
+
+</body>
+</html>
