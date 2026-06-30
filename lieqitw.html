@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星蔚蓝 · 离谱宇宙探索中心</title>
+    <style>
+        /* 样式跟你原来一样，此处省略保持简洁，你直接复制之前的完整样式即可 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0e1a; color: #e0e8f0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; background-image: radial-gradient(2px 2px at 20px 30px, #eee, transparent), radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent), radial-gradient(2px 2px at 50px 160px, #ddd, transparent), radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.6), transparent), radial-gradient(2px 2px at 130px 80px, #fff, transparent); background-size: 200px 200px; background-repeat: repeat; }
+        .container { max-width: 1200px; width: 100%; padding: 20px; background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(2px); }
+        header { text-align: center; padding: 50px 20px 30px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        header h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, #f0e6a0, #ffb07c, #a8d8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 40px rgba(168,216,255,0.3); letter-spacing: 4px; }
+        header p { font-size: 1.2rem; color: #90a0b8; margin-top: 15px; letter-spacing: 2px; }
+        .slogan { margin-top: 10px; font-style: italic; color: #f0b87a; font-size: 0.95rem; background: rgba(255,200,100,0.1); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,200,100,0.2); }
+        .btn-main { display: inline-block; margin-top: 25px; padding: 14px 48px; background: linear-gradient(135deg, #2a4a7a, #1a2a4a); color: #fff; border-radius: 50px; text-decoration: none; font-weight: bold; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s; box-shadow: 0 0 30px rgba(42,74,122,0.4); cursor: pointer; }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(42,74,122,0.8); }
+        .section-title { text-align: center; font-size: 2.2rem; margin: 60px 0 30px; color: #c8d8e8; }
+        .section-title small { display: block; font-size: 0.9rem; color: #7a8a9a; font-weight: normal; margin-top: 8px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 30px 0; }
+        .service-card { background: rgba(255,255,255,0.04); border-radius: 20px; padding: 30px 20px; text-align: center; border: 1px solid rgba(255,255,255,0.06); transition: 0.3s; backdrop-filter: blur(4px); }
+        .service-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-6px); border-color: rgba(168,216,255,0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .service-card .icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #e8f0f8; }
+        .service-card p { font-size: 0.95rem; color: #9aacbc; line-height: 1.6; }
+        .stats-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; background: rgba(0,0,0,0.4); border-radius: 30px; padding: 40px 30px; margin: 50px 0; border: 1px solid rgba(255,215,0,0.15); box-shadow: inset 0 0 60px rgba(255,215,0,0.03); }
+        .stat-item { text-align: center; }
+        .stat-item .number { font-size: 2.8rem; font-weight: 800; color: #ffd866; text-shadow: 0 0 30px rgba(255,216,102,0.2); display: block; line-height: 1.2; }
+        .stat-item .label { font-size: 0.9rem; color: #8a9aae; margin-top: 5px; }
+        .subscribe-box { text-align: center; background: linear-gradient(145deg, rgba(20,40,80,0.5), rgba(5,10,25,0.8)); border-radius: 30px; padding: 50px 30px; margin: 40px 0; border: 1px solid rgba(168,216,255,0.15); }
+        .subscribe-box h2 { font-size: 2rem; margin-bottom: 10px; }
+        .subscribe-box p { color: #9aacbc; margin-bottom: 25px; }
+        .subscribe-box input { padding: 14px 24px; border-radius: 50px; border: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 1rem; min-width: 280px; border: 1px solid rgba(255,255,255,0.15); outline: none; transition: 0.3s; }
+        .subscribe-box input:focus { background: rgba(255,255,255,0.15); border-color: #ffd866; }
+        .subscribe-box input::placeholder { color: #6a7a8a; }
+        .subscribe-box button { padding: 14px 32px; border-radius: 50px; border: none; background: linear-gradient(135deg, #ffd866, #f0b84a); color: #1a1a2a; font-weight: bold; font-size: 1rem; margin-left: 10px; cursor: pointer; transition: 0.3s; }
+        .subscribe-box button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,216,102,0.4); }
+        footer { text-align: center; padding: 30px 0 20px; border-top: 1px solid rgba(255,255,255,0.06); color: #5a6a7a; font-size: 0.85rem; }
+        footer .footnote { margin-top: 8px; color: #4a5a6a; font-style: italic; font-size: 0.75rem; letter-spacing: 1px; }
+        @media (max-width: 600px) { header h1 { font-size: 2.2rem; } .subscribe-box input { min-width: auto; width: 100%; margin-bottom: 10px; } .subscribe-box button { width: 100%; margin-left: 0; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 星蔚蓝</h1>
+            <p>探索离谱宇宙 · 触摸星辰外卖</p>
+            <div class="slogan">⚡ 已通过银河系 ISO 114514 认证 · 流浪地球法务部提供法律支持 ⚡</div>
+            <br>
+            <a href="#" class="btn-main" onclick="alert('🚀 正在召唤银河系滴滴代拍... 当前排单量：114514 单，请耐心等待！')">🌠 开始离谱观星之旅</a>
+        </header>
+
+        <h2 class="section-title">
+            🛸 我们的星际整活服务
+            <small>从入门到入土，全方位满足你的宇宙离谱好奇心</small>
+        </h2>
+        <div class="services-grid">
+            <div class="service-card"><span class="icon">🌌</span><h3>银河系滴滴代拍</h3><p>一键呼叫距离你最近的暗物质探测器，实时生成高清“宇宙外卖自拍照”，不满意包换，差评返还暗能量。</p></div>
+            <div class="service-card"><span class="icon">📡</span><h3>外星人WiFi热点破解</h3><p>利用中国天眼FAST捕捉外星文明信号，并试图破解其无线网络密码，提供“星际蹭网”服务（密码通常为：114514）。</p></div>
+            <div class="service-card"><span class="icon">🔥</span><h3>太阳烧烤VIP营地</h3><p>在距离太阳表面仅500万公里的安全轨道架设烧烤架，边看日珥边烤串（注：食材自备，防晒霜需抗辐射级别）。</p></div>
+            <div class="service-card"><span class="icon">🎨</span><h3>星球美颜修图大师课</h3><p>教你如何把火星P成粉色梦幻公主星，把冥王星（已复活）修出双眼皮，附带“星际网红滤镜”预设。</p></div>
+            <div class="service-card"><span class="icon">🔮</span><h3>量子纠缠星座算命</h3><p>基于量子纠缠原理，通过你生日当天的太阳耀斑强度，精准算出你下辈子的星座运势（不准包退，但退到平行宇宙）。</p></div>
+            <div class="service-card"><span class="icon">🦸</span><h3>奥特曼值班表查询</h3><p>实时追踪全球所有“行星防御计划”，并提供奥特曼轮岗安排，方便怪兽错峰出行，避免交通拥堵。</p></div>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat-item"><span class="number">🪐 10,000+</span><span class="label">已代购外星房产（火星别墅送陨石花园）</span></div>
+            <div class="stat-item"><span class="number">💡 2.5 万亿亿</span><span class="label">已点亮宇宙灯泡（专给银河系换灯管）</span></div>
+            <div class="stat-item"><span class="number">📡 10,000+</span><span class="label">已收编外星监视器（三体摄像头已劝降）</span></div>
+            <div class="stat-item"><span class="number">📞 1,000,000+</span><span class="label">已拦截外星推销电话（宇宙反诈中心认证）</span></div>
+        </div>
+
+        <!-- 订阅区 —— 现在集成 EmailJS -->
+        <div class="subscribe-box">
+            <h2>🚀 准备好了吗？一起仰望离谱的星空</h2>
+            <p>留下邮箱，获取本月最佳观测日期与<del>独家</del>胡编乱造的天文资讯</p>
+            <div>
+                <input type="email" id="emailInput" placeholder="输入你的邮箱地址（地球版）">
+                <button onclick="sendFunnyEmail()">🚀 立即预约（这次真发邮件）</button>
+            </div>
+            <p id="statusMsg" style="margin-top:15px; font-size:0.9rem; color:#ffd866; min-height:24px;"></p>
+        </div>
+
+        <footer>
+            <p>© 2026 星蔚蓝 · 保留所有吹牛权利。</p>
+            <p class="footnote">✨ 如果看不到星星，请尝试用力摇晃显示器，或者眨眼三下。仰望星空，脚踏实地（但我们在太空，脚不着地）。 ✨</p>
+        </footer>
+    </div>
+
+    <!-- 引入 EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/emailjs.min.js"></script>
+
+    <script type="text/javascript">
+        // ===================== 请替换成你的真实密钥 =====================
+        const YOUR_PUBLIC_KEY = 'yBqQ4zGwsMAJHrmSj';   // 替换成你的 Public Key
+        const YOUR_SERVICE_ID = 'service_z2htv0i';      // 替换成你的 Service ID
+        const YOUR_TEMPLATE_ID = 'template_8km6v09';    // 替换成你的 Template ID
+        // ================================================================
+
+        // 初始化 EmailJS
+        (function() {
+            emailjs.init({
+                publicKey: YOUR_PUBLIC_KEY,
+            });
+        })();
+
+        function sendFunnyEmail() {
+            const email = document.getElementById('emailInput').value;
+            const statusEl = document.getElementById('statusMsg');
+
+            // 简单邮箱格式校验
+            if (!email || !email.includes('@')) {
+                statusEl.textContent = '⚠️ 请至少输入一个像样的地球邮箱！';
+                return;
+            }
+
+            statusEl.textContent = '🛸 正在通过曲速引擎发送邮件...';
+
+            // 生成一个随机编号（让邮件更“离谱”）
+            const randomNum = Math.floor(Math.random() * 999999);
+
+            // 传给模板的参数（模板里用 {{user_email}} 和 {{random_number}} 接收）
+            const templateParams = {
+                user_email: email,
+                random_number: randomNum
+            };
+
+            emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    statusEl.textContent = '✅ 宇宙欢迎信已发送！快去邮箱（含垃圾箱）查收！';
+                    document.getElementById('emailInput').value = ''; // 清空输入
+                }, function(error) {
+                    statusEl.textContent = '❌ 宇宙邮递员迷路了！错误码：' + JSON.stringify(error);
+                    console.error('EmailJS 错误：', error);
+                });
+        }
+    </script>
+</body>
+</html>
